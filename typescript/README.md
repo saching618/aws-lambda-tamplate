@@ -1,7 +1,7 @@
 ### Local development
-Installing Node.js
+## Installing Node.js
 
-Serverless is a Node.js CLI tool so the first thing you need to do is to install Node.js on your machine.
+# Serverless is a Node.js CLI tool so the first thing you need to do is to install Node.js on your machine.
 
 Go to the official Node.js website, download and follow the installation instructions to install Node.js on your local machine.
 
