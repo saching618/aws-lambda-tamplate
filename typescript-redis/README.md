@@ -1,5 +1,9 @@
 ### Local development
+#### Installing Redis
+     https://redis.io/topics/quickstart
+     
 #### Installing Node.js
+     https://nodejs.org/en/download/
 
 #### Serverless is a Node.js CLI tool so the first thing you need to do is to install Node.js on your machine.
 
