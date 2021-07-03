@@ -33,6 +33,8 @@ inside typescript folder run
 ```bash
 npm install
 ```
+
+#### Redis Set Method
 You can invoke your function locally by using the following command inside typescipt folder:
 
 ```bash
@@ -47,3 +49,24 @@ Which should result in response similar to the following:
     "body": "{\"data\":true,\"message\":\"success\"}"
 }
 ```
+
+#### Redis Get Method
+You can invoke your function locally by using the following command inside typescipt folder:
+
+```bash
+serverless invoke local -f redisget --data '{"body":"{\n     \"key\": \"user_email\"}","headers":{"authentication_data":"redis_auth_permission"}}'
+```
+
+Which should result in response similar to the following:
+
+```
+{
+    "statusCode": 200,
+    "body": "{\"data\":\"null\",\"message\":\"success\"}"
+}
+OR 
+{
+    "statusCode": 200,
+    "body": "{\"data\":\"email@example.com\",\"message\":\"success\"}"
+}
+
