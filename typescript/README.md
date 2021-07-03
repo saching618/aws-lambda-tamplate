@@ -1,9 +1,34 @@
 ### Local development
-This lambda is based on serverless frame work
-to install serverless 
+#### Installing Node.js
+
+#### Serverless is a Node.js CLI tool so the first thing you need to do is to install Node.js on your machine.
+
+Go to the official Node.js website, download and follow the installation instructions to install Node.js on your local machine.
+
+Note: Serverless runs on Node v6 or higher.
+
+You can verify that Node.js is installed successfully by running node --version in your terminal. You should see the corresponding Node version number printed out.
+
+Installing the Serverless Framework
+
+Next, install the Serverless Framework via npm which was already installed when you installed Node.js.
+
+Open up a terminal and type npm install -g serverless to install Serverless.
+
 ```bash
-npm install -g serveless
+npm install -g serverless
 ```
+
+Once the installation process is done you can verify that Serverless is installed successfully by running the following command in your terminal:
+
+serverless
+
+To see which version of serverless you have installed run:
+
+```bash
+serverless --version
+```
+
 inside typescript folder run
 ```bash
 npm install
