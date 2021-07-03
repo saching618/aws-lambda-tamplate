@@ -35,7 +35,7 @@ npm install
 ```
 
 #### Redis Set Method
-You can invoke your function locally by using the following command inside typescipt folder:
+You can invoke your function locally by using the following command inside typescipt-redis folder:
 
 ```bash
 serverless invoke local -f redisset --data '{"body":"{\n     \"key\": \"user_email\",\n    \"value\": \"email@example.com\"}","headers":{"authentication_data":"redis_auth_permission"}}'
@@ -51,7 +51,7 @@ Which should result in response similar to the following:
 ```
 
 #### Redis Get Method
-You can invoke your function locally by using the following command inside typescipt folder:
+You can invoke your function locally by using the following command inside typescipt-redis folder:
 
 ```bash
 serverless invoke local -f redisget --data '{"body":"{\n     \"key\": \"user_email\"}","headers":{"authentication_data":"redis_auth_permission"}}'
@@ -73,7 +73,7 @@ OR
 
 
 #### Redis DEL Method
-You can invoke your function locally by using the following command inside typescipt folder:
+You can invoke your function locally by using the following command inside typescipt-redis folder:
 
 ```bash
 serverless invoke local -f redisgdel --data '{"body":"{\n     \"key\": \"user_email\"}","headers":{"authentication_data":"redis_auth_permission"}}'
