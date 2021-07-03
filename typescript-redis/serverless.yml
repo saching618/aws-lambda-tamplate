@@ -25,6 +25,22 @@ provider:
     REDIS_RECONNECT: ${file(config.json):REDIS_RECONNECT}
 
 functions:
+  hello:
+    handler: handler.hello
+    timeout: 30
+    vpc:
+      securityGroupIds:
+        - ${file(config.json):SECURITY_GROUP_ID_1}
+        - ${file(config.json):SECURITY_GROUP_ID_2}
+      subnetIds:
+        - ${file(config.json):SUBNET_ID_1}
+        - ${file(config.json):SUBNET_ID_2}
+        - ${file(config.json):SUBNET_ID_3}
+    events:
+      - http:
+          path: test
+          method: GET
+
   redisset:
     handler: lambda/redisset.handler
     timeout: 30
@@ -54,7 +70,7 @@ functions:
         - ${file(config.json):SUBNET_ID_3}
     events:
       - http:
-          path: set
+          path: get
           method: GET
 
   redisdel:
@@ -70,5 +86,5 @@ functions:
         - ${file(config.json):SUBNET_ID_3}
     events:
       - http:
-          path: set
+          path: del
           method: DELETE

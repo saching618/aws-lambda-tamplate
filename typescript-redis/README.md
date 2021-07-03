@@ -34,6 +34,23 @@ inside typescript folder run
 npm install
 ```
 
+#### hello test Method
+You can invoke your function locally by using the following command inside typescipt folder:
+
+```bash
+serverless invoke local -f hello
+```
+
+Which should result in response similar to the following:
+
+```bash
+{
+    "statusCode": 200,
+    "body": "{\n  \"message\": \"Go Serverless v2.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
+}
+```
+
+
 #### Redis Set Method
 You can invoke your function locally by using the following command inside typescipt folder:
 
