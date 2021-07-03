@@ -9,7 +9,7 @@ export class RedisClient  {
   private static redisDb: number = REDIS_CONFIG.db;
   private static redisPort: number = REDIS_CONFIG.port;
 
-  public static async init(requestId: any) {
+  public static async init(requestId: string) {
     try {
       if (!isRedisConnected) {
         RedisClient.redisClient = await redis.createClient({
@@ -55,12 +55,12 @@ export class RedisClient  {
     return false;
   }
 
-  async getValue(requestId: any, key:any) {
+  async getValue(requestId: string, key:string) {
     const getAsync = promisify(RedisClient.redisClient.get).bind(
       RedisClient.redisClient
     );
     const value = await getAsync(key)
-      .then((response: any) => {
+      .then((response: string) => {
         console.log(
           requestId,
           `redis key : ${key} returned value : ${response} `
@@ -79,16 +79,16 @@ export class RedisClient  {
   }
 
   async setValueWithTimeout(
-    requestId:any,
-    key: any,
-    value: any,
+    requestId:string,
+    key: string,
+    value: string,
     ttl: number
   ) {
     const setAsync = promisify(RedisClient.redisClient.set).bind(
       RedisClient.redisClient
     );
     const setResponse = await setAsync(key, value, REDIS_TTL_SECONDS, ttl)
-      .then((response: any) => {
+      .then((response: string) => {
         console.log(
             requestId,
           `redis key : ${key} set to value : ${value} `,
@@ -107,9 +107,32 @@ export class RedisClient  {
     return setResponse;
   }
 
+  async deleteKey(requestId: string, key:string) {
+    const delAsync = promisify(RedisClient.redisClient.del).bind(
+      RedisClient.redisClient
+    );
+    const setResponse = await delAsync(key)
+      .then((response: string) => {
+        console.log(
+          requestId,
+          `redis key : ${key} delete succesfully : ${response} `
+        );
+        return response;
+      })
+      .catch((err: any) => {
+        console.log(
+          requestId,
+          `failed to delete  key: ${key}`,
+          err
+        );
+        return false;
+      });
+    return setResponse;
+  }
+
 }
 
-export const initRedis = async (requestId: any) => {
+export const initRedis = async (requestId: string) => {
     try {
         return (await RedisClient.init(requestId));
     } catch (error) {

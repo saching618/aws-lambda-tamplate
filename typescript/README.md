@@ -69,4 +69,29 @@ OR
     "statusCode": 200,
     "body": "{\"data\":\"email@example.com\",\"message\":\"success\"}"
 }
+```
+
+
+#### Redis DEL Method
+You can invoke your function locally by using the following command inside typescipt folder:
+
+```bash
+serverless invoke local -f redisgdel --data '{"body":"{\n     \"key\": \"user_email\"}","headers":{"authentication_data":"redis_auth_permission"}}'
+```
+
+Which should result in response similar to the following:
+
+```
+if key is not present in redis
+{
+    "statusCode": 200,
+    "body": "{\"data\":0,\"message\":\"success\"}"
+}
+OR 
+if key is present in redis
+{
+    "statusCode": 200,
+    "body": "{\"data\":1,\"message\":\"success\"}"
+}
+```
 
